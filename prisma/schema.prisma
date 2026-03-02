@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                    String    @id @default(uuid())
+  name                  String
+  email                 String    @unique
+  phone                 String?   // Новое поле для телефона
+  password              String
+  role                  Role      @default(USER)
+  isActive              Boolean   @default(false) // Изменено на false по умолчанию
+  emailVerified         Boolean   @default(false)
+  emailVerificationCode String?   // Код подтверждения
+  emailVerificationExpires DateTime? // Время истечения кода
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@map("users")
+}
+
+model Category {
+  id          String     @id @default(uuid())
+  name        String
+  slug        String     @unique
+  description String?
+  order       Int        @default(0)
+  isActive    Boolean    @default(true)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  level       Int        @default(0)
+  parentId    String?
+  parent      Category?  @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children    Category[] @relation("CategoryHierarchy")
+  products    Product[]
+
+  @@map("categories")
+}
+
+model Product {
+  id             String   @id @default(uuid())
+  name           String
+  slug           String   @unique
+  description    String
+  price          Decimal  @db.Decimal(10, 2)
+  oldPrice       Decimal? @db.Decimal(10, 2)
+  images         String[]
+  categoryId     String
+  sku            String   @unique
+  stock          Int      @default(0)
+  color          String?
+  subcategory    String?
+  specifications Json     @default("{}")
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  subsubcategory String?
+  seoDescription String?
+  seoTitle       String?
+  category       Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@index([categoryId])
+  @@index([sku])
+  @@index([slug])
+  @@index([isActive])
+  @@map("products")
+}
+
+enum Role {
+  USER
+  ADMIN
+  EDITOR
+}

@@ -1,0 +1,80 @@
+[
+  {
+    "title": "Канцтовары",
+    "items": [
+      { "name": "Ручки", "path": "/catalog/pens", "description": "Шариковые, гелевые, роллеры" },
+      { "name": "Маркеры", "path": "/catalog/markers", "description": "Офисные и для досок" },
+      { "name": "Карандаши", "path": "/catalog/pencils", "description": "Твердые и мягкие грифели" },
+      { "name": "Грифели", "path": "/catalog/leads", "description": "Запасные стержни для механических карандашей" },
+      { "name": "Точилки", "path": "/catalog/sharpeners", "description": "Ручные и автоматические" },
+      { "name": "Ластики", "path": "/catalog/erasers", "description": "Классические и фигурные" },
+      { "name": "Корректоры", "path": "/catalog/correctors", "description": "Ручки, ленточные, жидкие" },
+      { "name": "Клей", "path": "/catalog/glue", "description": "Карандаш, ПВА, универсальный" },
+      { "name": "Клейкие ленты", "path": "/catalog/adhesive-tapes", "description": "Скотч и закладки" },
+      { "name": "Клейкие закладки", "path": "/catalog/sticky-notes", "description": "Метки и цветные закладки" },
+      { "name": "Бумага для заметок", "path": "/catalog/note-paper", "description": "Самоклеящиеся блоки" },
+      { "name": "Папки", "path": "/catalog/folders", "description": "Для документов и проектов" },
+      { "name": "Перфофайлы", "path": "/catalog/perforated-files", "description": "Прозрачные файлы" },
+      { "name": "Подкладки настольные", "path": "/catalog/desk-mats", "description": "Для защиты стола" },
+      { "name": "Лотки и накопители", "path": "/catalog/paper-trays", "description": "Организация бумаг" },
+      { "name": "Планшеты", "path": "/catalog/clipboards", "description": "Планшеты и папки-планшеты" },
+      { "name": "Штемпельная продукция", "path": "/catalog/stamp-products", "description": "Краски и подушки" },
+      { "name": "Степлеры", "path": "/catalog/staplers", "description": "Степлеры и скобы" },
+      { "name": "Клейкие ленты и диспенсеры", "path": "/catalog/adhesive-tapes-dispensers", "description": "Скотч и держатели" },
+      { "name": "Канцелярские наборы", "path": "/catalog/stationery-sets", "description": "Наборы для школы и офиса" },
+      { "name": "ZIP-пакеты", "path": "/catalog/zip-bags", "description": "Пакеты с застежкой" },
+      { "name": "Чертежные принадлежности", "path": "/catalog/drawing-supplies", "description": "Линейки, угольники, циркули" },
+      { "name": "Ножи и резаки", "path": "/catalog/knives-cutters", "description": "Канцелярские ножи, резаки" },
+      { "name": "Ножницы", "path": "/catalog/scissors", "description": "Канцелярские, детские" },
+      { "name": "Обложки", "path": "/catalog/covers", "description": "Для тетрадей и документов" }
+    ]
+  },
+  {
+    "title": "Бумажная продукция",
+    "items": [
+      { "name": "Альбомы для рисования", "path": "/catalog/paper/albomy-dlya-risovaniya", "description": "На скобе, клею, спирали" },
+      { "name": "Бумага для рисования в папке", "path": "/catalog/paper/bumaga-dlya-risovaniya-v-papke", "description": "Для рисунков и эскизов" },
+      { "name": "Записные книжки", "path": "/catalog/paper/zapisnye-knizhki", "description": "Разные форматы и обложки" },
+      { "name": "Наборы для творчества", "path": "/catalog/paper/nabory-dlya-tvorchestva", "description": "Бумага и картон для поделок" },
+      { "name": "Наклейки", "path": "/catalog/paper/nakleyki", "description": "Декоративные и тематические" },
+      { "name": "Планинги и ежедневники", "path": "/catalog/paper/planingi-i-ezhednevniki", "description": "Планирование и заметки" },
+      { "name": "Расписания уроков", "path": "/catalog/paper/raspisaniya-urokov", "description": "Для школы" },
+      { "name": "Тетради FolderBook", "path": "/catalog/paper/tetradi-folderbook", "description": "Съемные блоки и обложки" },
+      { "name": "Тетради для записи иностранных слов", "path": "/catalog/paper/tetradi-dlya-zapisi-inostrannyh-slov", "description": "Лексические тетради" },
+      { "name": "Тетради для нот", "path": "/catalog/paper/tetradi-dlya-not", "description": "Линейки для нот" },
+      { "name": "Тетради и блокноты", "path": "/catalog/paper/tetradi-i-bloknoty", "description": "Повседневные тетради" },
+      { "name": "Тетради и блокноты с пластиковой обложкой", "path": "/catalog/paper/tetradi-i-bloknoty-s-plastikovoy-oblozhkoy", "description": "Прочная обложка" },
+      { "name": "Тетради на кольцах", "path": "/catalog/paper/tetradi-na-koltsakh", "description": "Сменные блоки" },
+      { "name": "Тетради на скобе с картонной обложкой", "path": "/catalog/paper/tetradi-na-skobe-s-kartonnoy-oblozhkoy", "description": "Классические ученические" },
+      { "name": "Тетради на спирали и блокноты", "path": "/catalog/paper/tetradi-na-spirali-i-bloknoty", "description": "Удобное перелистывание" },
+      { "name": "Тетради предметные", "path": "/catalog/paper/tetradi-predmetnye", "description": "Серия по предметам" }
+    ]
+  },
+  {
+    "title": "Товары для творчества",
+    "items": [
+      { "name": "Краски", "path": "/catalog/art/kraski-i-kisti", "description": "Гуашь, акварель, кисти" },
+      { "name": "Акварельные краски", "path": "/catalog/art/akvarelnye-kraski", "description": "Акварель в тубах и кюветах" },
+      { "name": "Акриловые краски", "path": "/catalog/art/akrilovye-kraski", "description": "Акрил для холста и декора" },
+      { "name": "Цветные карандаши", "path": "/catalog/art/tsvetnye-karandashi", "description": "Наборы и одиночные" },
+      { "name": "Карандаши чернографитные", "path": "/catalog/art/karandashi-chernografitnye", "description": "Эскизы и рисунки" },
+      { "name": "Ластики", "path": "/catalog/art/lastiki", "description": "Мягкие и клячка" },
+      { "name": "Мелки и пастель", "path": "/catalog/art/melki-i-pastel", "description": "Пастель, восковые мелки" },
+      { "name": "Фломастеры и маркеры", "path": "/catalog/art/flomastery-i-markery", "description": "Творческие наборы" },
+      { "name": "Пластилин", "path": "/catalog/art/plastilin", "description": "Классический и восковой" },
+      { "name": "Аксессуары для творчества", "path": "/catalog/art/aksessuary-dlya-tvorchestva", "description": "Палитры, стаканы, мольберты" }
+    ]
+  },
+  {
+    "title": "Рюкзаки и аксессуары",
+    "items": [
+      { "name": "Пеналы", "path": "/catalog/backpacks/penals", "description": "Пеналы и органайзеры" },
+      { "name": "Сумки", "path": "/catalog/backpacks/bags", "description": "Сумки и аксессуары" },
+      { "name": "Ранцы и рюкзаки ученические", "path": "/catalog/backpacks/----1756164862990-0", "description": "Модели для школы" },
+      { "name": "Рюкзаки", "path": "/catalog/backpacks/-1756164862998-1", "description": "Городские и школьные" },
+      { "name": "Мини-рюкзаки для детей", "path": "/catalog/backpacks/----1756164863000-0", "description": "Компактные модели" },
+      { "name": "Мешки для обуви", "path": "/catalog/backpacks/---1756164863012-1", "description": "Для сменной обуви" },
+      { "name": "Сумки-шопперы", "path": "/catalog/backpacks/--1756164863011-0", "description": "Лёгкие сумки" }
+    ]
+  }
+]

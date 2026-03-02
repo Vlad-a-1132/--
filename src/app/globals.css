@@ -1,7 +1,408 @@
 @import "tailwindcss";
+@import 'slick-carousel/slick/slick.css';
+@import 'slick-carousel/slick/slick-theme.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Кастомные анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Улучшенные hover-эффекты для карточек */
+.product-card-hover {
+  transition: all 0.3s ease;
+}
+
+.product-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Анимация для кнопок */
+.btn-hover {
+  transition: all 0.2s ease;
+}
+
+.btn-hover:hover {
+  transform: scale(1.05);
+}
+
+/* Плавные переходы для всех элементов */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Плавающая кнопка корзины: анимация */
+@keyframes floatCart {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.floating-cart-button {
+  animation: floatCart 2.5s ease-in-out infinite;
+}
+
+/* Hero-слайдер: картинка без белой полосы снизу (лёгкая обрезка низа) */
+.hero-slider .hero-slide-image {
+  object-fit: cover;
+  object-position: center 45%;
+}
+
+/* Hero-слайдер: появление текста и кнопки */
+@keyframes heroContentIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.slick-active .hero-slide-content .hero-slide-title {
+  animation: heroContentIn 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+}
+.slick-active .hero-slide-content .hero-slide-desc {
+  animation: heroContentIn 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
+}
+.slick-active .hero-slide-content .hero-slide-btn-wrap {
+  animation: heroContentIn 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s both;
+}
+
+/* Hero: блеск на кнопке (shimmer) */
+@keyframes heroBtnShine {
+  0% { left: -100%; }
+  60%, 100% { left: 100%; }
+}
+.hero-btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.hero-btn-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: heroBtnShine 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Hero: подчёркивание заголовка */
+@keyframes heroLineIn {
+  from { transform: scaleX(0); opacity: 0; }
+  to { transform: scaleX(1); opacity: 1; }
+}
+.slick-active .hero-slide-content .hero-slide-title-line {
+  animation: heroLineIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
+  transform-origin: left;
+}
+
+/* Hero: лёгкое мерцание оверлея */
+@keyframes overlayPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.92; }
+}
+.hero-overlay-animated {
+  animation: overlayPulse 6s ease-in-out infinite;
+}
+
+/* Пульс активной точки слайдера */
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1.2); box-shadow: 0 0 0 0 rgba(255,255,255,0.5); }
+  50% { transform: scale(1.35); box-shadow: 0 0 0 6px rgba(255,255,255,0); }
+}
+.hero-slider .slick-dots li.slick-active button {
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+/* Карточки категорий: hover — увеличение изображения */
+.card-image-zoom {
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+.card-image-zoom:hover {
+  transform: scale(1.08);
+}
+.category-card-wrap:hover .card-image-zoom {
+  transform: scale(1.08);
+}
+
+/* Появление блоков при загрузке (каскад) */
+@keyframes sectionFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-section-in {
+  animation: sectionFadeUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Баннер страницы: лёгкий zoom при наведении */
+.banner-image-zoom {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.banner-image-zoom:hover {
+  transform: scale(1.05);
+}
+
+/* Заголовок баннера: читаемость на любом фоне */
+.banner-title {
+  text-shadow: 0 1px 3px rgba(0,0,0,1), 0 2px 8px rgba(0,0,0,0.9), 0 4px 16px rgba(0,0,0,0.7);
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.9));
+}
+
+/* Первый слайд: слоган «Всё для школы и офиса» */
+.slide-slogan {
+  font-family: system-ui, -apple-system, sans-serif;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  letter-spacing: -0.02em;
+}
+.slide-slogan-btn {
+  background: linear-gradient(90deg, #84cc16 0%, #15803d 50%, #166534 100%);
+}
+.slide-slogan-star {
+  position: absolute;
+  color: #fbbf24;
+  font-size: 1.25rem;
+  text-shadow: 0 0 0 #f97316;
+  opacity: 0.95;
+}
+.slide-slogan-star-1 { top: -0.5rem; left: 10%; }
+.slide-slogan-star-2 { top: 0.5rem; right: 8%; color: #f97316; }
+.slide-slogan-star-3 { bottom: 0.25rem; left: 15%; font-size: 1rem; }
+.slide-slogan-star-4 { bottom: -0.25rem; right: 12%; font-size: 1rem; color: #f97316; }
+
+/* Стили стрелок и точек слайдера — убираем белую полосу снизу */
+.hero-slider.slick-slider,
+.hero-slider.slick-initialized {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  overflow: hidden;
+  background: transparent !important;
+}
+.hero-slider .slick-list {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  border: none;
+  background: transparent !important;
+}
+.hero-slider .slick-track {
+  border: none;
+  background: transparent !important;
+}
+.hero-slider .slick-track::before,
+.hero-slider .slick-track::after {
+  display: none !important;
+}
+.hero-slider .slick-slide,
+.hero-slider .slick-slide > div {
+  height: 100%;
+  background: transparent !important;
+}
+/* Точки ВНУТРИ слайдера, без фона и без полосы */
+.hero-slider .slick-dots,
+.hero-slider.slick-dotted .slick-dots {
+  bottom: 24px !important;
+  top: auto !important;
+  line-height: 0 !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+}
+.hero-slider .slick-dots li {
+  margin: 0;
+  width: auto;
+  height: auto;
+}
+.hero-slider .slick-dots li button {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+.hero-slider .slick-dots li button:before {
+  display: none;
+}
+.hero-slider .slick-dots li:hover button {
+  background: #fff;
+  transform: scale(1.2);
+}
+.hero-slider .slick-dots li.slick-active button {
+  background: #fff;
+}
+.hero-slider .slick-prev,
+.hero-slider .slick-next {
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.hero-slider .slick-prev:hover,
+.hero-slider .slick-next:hover {
+  background: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+.hero-slider .slick-prev { left: 20px; }
+.hero-slider .slick-next { right: 20px; }
+.hero-slider .slick-prev:before,
+.hero-slider .slick-next:before {
+  font-size: 20px;
+  color: #1e3a5f;
+  opacity: 1;
+  font-weight: bold;
+}
+
+/* Мобильные карточки каталога: иконки и текст */
+.catalog-mobile-cards .catalog-mobile-icon {
+  min-width: 4rem;
+}
+.catalog-mobile-cards .catalog-mobile-icon img {
+  width: 4rem !important;
+  height: 4rem !important;
+  max-width: 4rem !important;
+  max-height: 4rem !important;
+  object-fit: contain;
+}
+
+/* Стили для выпадающего меню категорий */
+.nav-dropdown {
+  pointer-events: auto;
+}
+
+.nav-dropdown h3 a {
+  cursor: pointer;
+}
+
+.nav-dropdown h3 a:hover {
+  color: #2563eb;
+}
+
+/* Улучшенные стили для выпадающего меню */
+.nav-dropdown {
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: auto;
+}
+
+/* Контейнер выпадающего меню */
+.catalog-dropdown-container {
+  position: relative;
+}
+
+/* Невидимая область для предотвращения "проваливания" курсора */
+.catalog-dropdown-container::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  z-index: -1;
+}
+
+/* Дополнительная защита для выпадающего меню */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: transparent;
+}
+
+/* Плавное появление/исчезновение */
+.nav-dropdown-enter {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.nav-dropdown-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-dropdown-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-dropdown-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+/* Оптимизация производительности */
+.nav-dropdown {
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Улучшенные переходы */
+.catalog-dropdown-container {
+  will-change: auto;
+}
+
+/* Предотвращение мерцания */
+.nav-dropdown {
+  contain: layout style paint;
+}
+
+/* Убеждаемся, что все ссылки в навигации имеют курсор-указатель */
+nav a, nav button {
+  cursor: pointer;
+}
+
+@font-face {
+  font-family: 'TimesNewRoman';
+  src: url('/fonts/ofont.ru_Times New Roman.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 :root {
-  --background: #ffffff;
+  --foreground-rgb: 64, 58, 52;
+  --background-rgb: 246, 241, 235;
+  --background: #f6f1eb;
   --foreground: #171717;
 }
 
@@ -20,7 +421,123 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  font-family: 'TimesNewRoman', serif;
+}
+
+/* Ensure white background for content blocks */
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+/* Improved text contrast for the body content */
+.text-gray-600 {
+  color: #4b5563 !important;
+}
+
+.text-gray-500 {
+  color: #374151 !important;
+}
+
+/* Ensure headings have good contrast */
+h1, h2, h3, h4, h5, h6 {
+  color: #403A34;
+  font-family: 'TimesNewRoman', serif;
+}
+
+/* Improve contrast for buttons with text */
+button.text-gray-600, 
+a.text-gray-600 {
+  color: #4b5563 !important;
+}
+
+/* Ensure footer text is readable */
+footer .text-gray-600 {
+  color: #374151 !important;
+}
+
+
+
+/* Improved contrast for the main content area */
+.improved-contrast {
+  color: #111827;
+}
+
+.improved-contrast p {
+  color: #1f2937 !important;
+}
+
+.improved-contrast .text-sm {
+  color: #1f2937 !important;
+}
+
+/* Ensure product cards have good contrast */
+.improved-contrast .bg-white h3 {
+  color: #111827 !important;
+  font-weight: 600;
+}
+
+.improved-contrast .bg-white p {
+  color: #1f2937 !important;
+}
+
+/* Improve contrast for category descriptions */
+.improved-contrast .text-gray-600 {
+  color: #374151 !important;
+}
+
+/* Footer specific improvements */
+footer {
+  background-color: #f6f1eb !important;
+}
+
+footer h3 {
+  color: #111827 !important;
+  font-weight: 700 !important;
+}
+
+footer .text-gray-600,
+footer .text-gray-500 {
+  color: #374151 !important;
+}
+
+footer a.text-gray-600:hover {
+  color: #2563eb !important;
+}
+
+/* Improve contrast for buttons and links */
+.improved-contrast button {
+  font-weight: 600 !important;
+}
+
+/* Ensure "Подробнее" links are clearly visible */
+.improved-contrast a[href="#"].text-blue-600,
+.improved-contrast a[href="#"].text-xs {
+  color: #2563eb !important;
+  font-weight: 500 !important;
+}
+
+/* Improve contrast for colored text */
+.improved-contrast .text-blue-600 {
+  color: #2563eb !important;
+}
+
+.improved-contrast .text-green-600 {
+  color: #059669 !important;
+}
+
+.improved-contrast .text-purple-600 {
+  color: #7c3aed !important;
+}
+
+.improved-contrast .text-yellow-600 {
+  color: #ca8a04 !important;
+}
+
+.improved-contrast .text-red-600 {
+  color: #dc2626 !important;
+}
+
+* {
+  font-family: 'TimesNewRoman', serif;
 }
