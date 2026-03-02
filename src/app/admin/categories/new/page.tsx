@@ -6,6 +6,13 @@ import { useSession } from 'next-auth/react';
 import { ArrowLeft, Save, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 
+interface CategoryItem {
+  id: string;
+  name: string;
+  level: number;
+  parentId?: string | null;
+}
+
 export default function NewCategoryPage() {
   const router = useRouter();
   const { data: session, status } = useSession();
@@ -13,7 +20,7 @@ export default function NewCategoryPage() {
   const [description, setDescription] = useState('');
   const [parentId, setParentId] = useState('');
   const [level, setLevel] = useState(0);
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<CategoryItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingCategories, setIsLoadingCategories] = useState(true);
 
