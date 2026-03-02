@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import { Save, ArrowLeft, Loader2, Upload } from 'lucide-react';
 
 interface Category {
@@ -15,8 +15,10 @@ interface Category {
   isActive: boolean;
 }
 
-export default function EditCategoryPage({ params }: { params: { id: string } }) {
+export default function EditCategoryPage() {
   const router = useRouter();
+  const params = useParams();
+  const id = params?.id as string;
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
@@ -36,7 +38,7 @@ export default function EditCategoryPage({ params }: { params: { id: string } })
   useEffect(() => {
     const fetchCategory = async () => {
       try {
-        const response = await fetch(`/api/admin/categories/${params.id}`);
+        const response = await fetch(`/api/admin/categories/${id}`);
         const data = await response.json();
 
         if (!response.ok) throw new Error(data.error);
@@ -58,7 +60,7 @@ export default function EditCategoryPage({ params }: { params: { id: string } })
         if (!response.ok) throw new Error(data.error);
 
         // Filter out current category and its children
-        const filteredCategories = data.filter((c: Category) => c._id !== params.id);
+        const filteredCategories = data.filter((c: Category) => c._id !== id);
         setCategories(filteredCategories);
       } catch (error) {
         console.error('Error fetching categories:', error);
@@ -68,7 +70,7 @@ export default function EditCategoryPage({ params }: { params: { id: string } })
 
     fetchCategory();
     fetchCategories();
-  }, [params.id]);
+  }, [id]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
