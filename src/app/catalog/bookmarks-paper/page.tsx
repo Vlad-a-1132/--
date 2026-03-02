@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
 import CategoryPage from '../../components/CategoryPage';
 
 // Временные данные для тестовых карточек товаров
@@ -54,13 +52,12 @@ export default function BookmarksPaperPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
-        <Link 
+        <a 
           href="/catalog" 
           className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors mb-4"
         >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Назад к каталогу
-        </Link>
+          ← Назад к каталогу
+        </a>
         <h1 className="text-3xl font-bold text-gray-900">Закладки для книг бумажные</h1>
         <p className="text-gray-600 mt-2">Закладки для книг различных типов</p>
       </div>
