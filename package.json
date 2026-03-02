@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
-    "postinstall": "prisma generate",
     "start": "next start",
     "lint": "next lint",
     "db:generate": "prisma generate",
@@ -28,7 +27,7 @@
     "dotenv": "^16.4.7",
     "lucide-react": "^0.479.0",
     "multer": "^1.4.5-lts.1",
-    "next": "15.2.1",
+    "next": "^15.2.6",
     "next-auth": "^4.24.11",
     "nodemailer": "^6.10.1",
     "pg": "^8.11.3",
