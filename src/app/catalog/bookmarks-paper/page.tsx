@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from 'react';
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
 import CategoryPage from '../../components/CategoryPage';
 
 // Временные данные для тестовых карточек товаров
