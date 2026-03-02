@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import ProductCard from './ProductCard';
@@ -21,7 +21,7 @@ interface Product {
   description: string;
   category?: string;
   stock?: number;
-  slug: string;
+  slug?: string;
 }
 
 // Интерфейс для пропсов компонента
@@ -32,7 +32,7 @@ interface CategoryPageProps {
   categoryPath: string;           // Путь к странице категории
 }
 
-export default function CategoryPage({ 
+function CategoryPageInner({ 
   categoryName, 
   subcategories, 
   products, 
@@ -160,7 +160,7 @@ export default function CategoryPage({
                     image={product.image}
                     category={product.category || 'Ручки'}
                     stock={product.stock || 1}
-                    slug={product.slug}
+                    slug={product.slug ?? product.id}
                   />
                 </div>
               ))}
@@ -182,4 +182,12 @@ export default function CategoryPage({
       </div>
     </div>
   );
-} 
+}
+
+export default function CategoryPage(props: CategoryPageProps) {
+  return (
+    <Suspense fallback={<div className="max-w-7xl mx-auto px-4 py-8"><div className="animate-pulse h-8 bg-gray-200 rounded w-1/3 mb-4" /><div className="animate-pulse h-64 bg-gray-100 rounded" /></div>}>
+      <CategoryPageInner {...props} />
+    </Suspense>
+  );
+}

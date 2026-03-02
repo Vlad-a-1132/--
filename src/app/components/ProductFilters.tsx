@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 interface Category {
-  _id: string;
+  _id?: string;
+  id?: string;
   name: string;
   slug: string;
 }

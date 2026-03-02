@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Каталог | Эквилибриум',
   description: 'Каталог товаров Эквилибриум - канцелярские товары, товары для офиса и школы',

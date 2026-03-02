@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
 import { useSearchParams } from 'next/navigation';
 
@@ -31,7 +31,7 @@ interface ProductGridProps {
   className?: string;
 }
 
-export default function ProductGrid({ categorySlug, category, subcategory: subcategoryProp, className }: ProductGridProps) {
+function ProductGridInner({ categorySlug, category, subcategory: subcategoryProp, className }: ProductGridProps) {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const searchParams = useSearchParams();
@@ -111,4 +111,22 @@ export default function ProductGrid({ categorySlug, category, subcategory: subca
       </div>
     </div>
   );
-} 
+}
+
+function ProductGridFallback({ className }: { className?: string }) {
+  return (
+    <div className={className}>
+      <div className="flex justify-center items-center min-h-[400px]">
+        <div className="w-8 h-8 border-4 border-blue-500 rounded-full border-t-transparent animate-spin"></div>
+      </div>
+    </div>
+  );
+}
+
+export default function ProductGrid(props: ProductGridProps) {
+  return (
+    <Suspense fallback={<ProductGridFallback className={props.className} />}>
+      <ProductGridInner {...props} />
+    </Suspense>
+  );
+}

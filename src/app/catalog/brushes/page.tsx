@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import ProductCard from '../../components/ProductCard';
 import ProductGrid from '../../components/ProductGrid';
-
+import CategoryPage from '../../components/CategoryPage';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
