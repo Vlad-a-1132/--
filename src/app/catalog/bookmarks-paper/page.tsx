@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import CategoryPage from '../../components/CategoryPage';
 
 // Временные данные для тестовых карточек товаров
