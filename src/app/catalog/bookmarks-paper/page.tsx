@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import CategoryPage from '../../components/CategoryPage';
+import ProductGrid from '../../components/ProductGrid';
 
 // Временные данные для тестовых карточек товаров
 const testProducts = [
