@@ -24,24 +24,29 @@ interface Product {
 
 interface ProductGridProps {
   categorySlug?: string;
+  /** Alias for categorySlug (for pages that pass category="slug") */
+  category?: string;
+  /** Optional subcategory filter (overrides or supplements URL param) */
+  subcategory?: string | null;
   className?: string;
 }
 
-export default function ProductGrid({ categorySlug, className }: ProductGridProps) {
+export default function ProductGrid({ categorySlug, category, subcategory: subcategoryProp, className }: ProductGridProps) {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const searchParams = useSearchParams();
+  const slug = categorySlug ?? category;
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const search = searchParams.get('search');
-        const subcategory = searchParams.get('subcategory');
+        const subcategory = subcategoryProp ?? searchParams.get('subcategory');
         const all = searchParams.get('all');
         
         let apiUrl = '/api/products';
-        if (categorySlug) {
-          apiUrl = `/api/products/category/${categorySlug}`;
+        if (slug) {
+          apiUrl = `/api/products/category/${slug}`;
         }
         
         const params = new URLSearchParams();
@@ -64,7 +69,7 @@ export default function ProductGrid({ categorySlug, className }: ProductGridProp
     };
 
     fetchProducts();
-  }, [searchParams, categorySlug]);
+  }, [searchParams, slug, subcategoryProp]);
 
   if (isLoading) {
     return (
